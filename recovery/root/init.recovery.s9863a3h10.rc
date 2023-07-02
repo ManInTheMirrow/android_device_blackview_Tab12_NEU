@@ -1,8 +1,8 @@
 #add for board init.rc for recovery mode
 import /init.recovery.common.rc
 
-on init
-    start set_permissive
+#on init
+#    start set_permissive
 
 on boot
     start health-hal-2-1
@@ -12,13 +12,6 @@ on post-fs
 
 on property:ro.crypto.state=unencrypted
     start prepdecrypt
-
-service set_permissive /system/bin/set_permissive.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
 
 on property:ro.crypto.state=unsupported
     stop sbinqseecomd
